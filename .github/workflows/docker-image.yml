@@ -20,10 +20,10 @@ jobs:
       id: vars
       run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:${{steps.vars.outputs.tag}}
+      run: docker build . --file Dockerfile --tag pjlamb12/angular-cli:${{steps.vars.outputs.tag}}
     - name: Push the tagged Docker image
-      run: docker push my-image-name:${{steps.vars.outputs.tag}}
+      run: docker push pjlamb12/angular-cli:${{steps.vars.outputs.tag}}
     - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:latest
+      run: docker build . --file Dockerfile --tag pjlamb12/angular-cli:latest
     - name: Push the latest Docker image
-      run: docker push my-image-name:latest
+      run: docker push pjlamb12/angular-cli:latest
